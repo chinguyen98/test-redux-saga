@@ -15,7 +15,7 @@ const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync }) =>
     </button>
     <hr />
     <div>
-      Clicked: {value} times
+      Clicked: {value} time(s)
     </div>
   </div>
 
