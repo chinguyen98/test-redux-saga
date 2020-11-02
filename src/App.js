@@ -1,9 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import Counter from './components/counter.component';
-import store, { action } from './store';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncIncrementCounter, decrementCounter, incrementCounter } from './actions/counter.action';
 
 function App() {
+  const count = useSelector(state => state.count.count);
+  const dispatch = useDispatch();
 
   return (
     <div className="App">
@@ -11,10 +13,10 @@ function App() {
         <h1 className="text-danger">Hello redux saga</h1>
         <div>
           <Counter
-            value={store.getState().countReducer.count}
-            onIncrement={() => action('INCREMENT')}
-            onDecrement={() => action('DECREMENT')}
-            onIncrementAsync={() => action('INCREMENT_ASYNC')}
+            value={count}
+            onIncrement={() => dispatch(incrementCounter())}
+            onDecrement={() => dispatch(decrementCounter())}
+            onIncrementAsync={() => dispatch(asyncIncrementCounter())}
           />
         </div>
       </header>

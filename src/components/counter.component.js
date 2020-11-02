@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync }) =>
+const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync, onIncrementByTen }) =>
   <div>
     <button onClick={onIncrementAsync}>
       Increment after 1 second
