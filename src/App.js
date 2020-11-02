@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { asyncIncrementCounter, decrementCounter, incrementCounter } from './actions/counter.action';
 
 function App() {
-  const count = useSelector(state => state.count.count);
+  const count = useSelector(state => state.counter.count);
   const dispatch = useDispatch();
 
   return (

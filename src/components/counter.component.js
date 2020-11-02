@@ -1,16 +1,16 @@
 import React from 'react';
 
-const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync, onIncrementByTen }) =>
+const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync }) =>
   <div>
-    <button onClick={onIncrementAsync}>
+    <button className="btn btn-primary" onClick={onIncrementAsync}>
       Increment after 1 second
     </button>
     {' '}
-    <button onClick={onIncrement}>
+    <button className="btn btn-success" onClick={onIncrement}>
       Increment
     </button>
     {' '}
-    <button onClick={onDecrement}>
+    <button className="btn btn-danger" onClick={onDecrement}>
       Decrement
     </button>
     <hr />
