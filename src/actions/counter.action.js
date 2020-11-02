@@ -15,3 +15,10 @@ export const asyncIncrementCounter = () => {
     type: 'INCREMENT_ASYNC',
   }
 }
+
+export const setLoading = (loadingStatus) => {
+  return {
+    type: 'SET_LOADING',
+    payload: loadingStatus,
+  }
+}

@@ -1,5 +1,6 @@
 const initState = {
   count: 0,
+  isLoading: false,
 };
 
 const counterReducer = (state = initState, action) => {
@@ -14,6 +15,12 @@ const counterReducer = (state = initState, action) => {
       return {
         ...state,
         count: state.count - 1,
+      }
+    }
+    case 'SET_LOADING': {
+      return {
+        ...state,
+        isLoading: action.payload,
       }
     }
     default: {
