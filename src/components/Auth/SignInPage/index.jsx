@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Alert, Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ import { signIn } from '../../../actions/user.action';
 function SignInPage() {
   const dispatch = useDispatch();
   const isUserLoading = useSelector(state => state.user.isLoading);
+  const userError = useSelector(state => state.user.error);
 
   const schema = yup.object().shape({
     email: yup.string().email('Vui lòng nhập đúng định dạng email!').required('Vui lòng nhập email!'),
@@ -28,6 +29,11 @@ function SignInPage() {
       <Form
         onSubmit={handleSubmit(handleSignIn)}
       >
+        <h1>Sign in form:</h1>
+        <hr />
+        {
+          userError !== null && <Alert color="danger">{userError}</Alert>
+        }
         <FormGroup>
           <Label for="email">
             Email

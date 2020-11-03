@@ -1,7 +1,10 @@
+import userActionTypes from "../types/user.type";
+
 const initState = {
   firstName: null,
   lastName: null,
   isLoading: false,
+  error: null,
 }
 
 const userReducer = (state = initState, action) => {
@@ -13,6 +16,7 @@ const userReducer = (state = initState, action) => {
         firstName,
         lastName,
         isLoading,
+        error: null,
       }
     }
     case 'SET_USER_LOADING': {
@@ -20,6 +24,14 @@ const userReducer = (state = initState, action) => {
       return {
         ...state,
         isLoading,
+      }
+    }
+    case userActionTypes.SET_ERROR: {
+      const { errorMessage } = action.payload;
+      return {
+        ...state,
+        error: errorMessage,
+        isLoading: false,
       }
     }
     default: {
