@@ -1,12 +1,12 @@
 const initState = {
-  firstName: '',
-  lastName: '',
+  firstName: null,
+  lastName: null,
   isLoading: false,
 }
 
 const userReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'GET_USER': {
+    case 'SET_USER': {
       return {
         ...state,
         firstName: action.payload.firstName,
