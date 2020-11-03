@@ -15,8 +15,8 @@ function SignInPage() {
     resolver: yupResolver(schema),
   });
 
-  const handleSignIn = () => {
-    console.log('Sign in!');
+  const handleSignIn = (data) => {
+    console.log(data);
   }
 
   return (
