@@ -9,4 +9,8 @@ const axiosClient = axios.create({
   paramsSerializer: params => queryString.stringify(params),
 });
 
+axiosClient.interceptors.response.use((response) => {
+  return response.data;
+});
+
 export default axiosClient;

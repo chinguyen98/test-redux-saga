@@ -3,8 +3,11 @@ import { useForm } from 'react-hook-form';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../../actions/user.action';
 
 function SignInPage() {
+  const dispatch = useDispatch();
 
   const schema = yup.object().shape({
     email: yup.string().email('Vui lòng nhập đúng định dạng email!').required('Vui lòng nhập email!'),
@@ -16,7 +19,7 @@ function SignInPage() {
   });
 
   const handleSignIn = (data) => {
-    console.log(data);
+    dispatch(signIn(data));
   }
 
   return (
