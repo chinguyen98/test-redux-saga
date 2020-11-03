@@ -5,9 +5,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from '../../../actions/user.action';
+import { useHistory } from 'react-router-dom';
 
 function SignInPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const isUserLoading = useSelector(state => state.user.isLoading);
   const userError = useSelector(state => state.user.error);
 
@@ -20,8 +23,12 @@ function SignInPage() {
     resolver: yupResolver(schema),
   });
 
-  const handleSignIn = (data) => {
-    dispatch(signIn(data));
+  const handleSignIn = ({ email, password }) => {
+    dispatch(signIn({
+      email,
+      password,
+      redirectCallback: history,
+    }));
   }
 
   return (

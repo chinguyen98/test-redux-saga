@@ -4,7 +4,7 @@ import * as jwt from 'jsonwebtoken';
 import { setError, setLoading, setUser } from "../actions/user.action";
 import handleHttpError from "../helpers/handleHttpError";
 
-function* signIn({ payload: { email, password } }) {
+function* signIn({ payload: { email, password, redirectCallback } }) {
   try {
     yield put(setLoading({ isLoading: true }));
     const response = yield signInApi({ email, password });
@@ -15,6 +15,7 @@ function* signIn({ payload: { email, password } }) {
       lastName: lastname,
       isLoading: false,
     }));
+    redirectCallback.push('/feeds');
   } catch (err) {
     const errorMessage = yield handleHttpError(err);
     yield put(setError({ errorMessage }));

@@ -7,10 +7,10 @@ export const setUser = ({ firstName, lastName, isLoading }) => {
   }
 }
 
-export const signIn = ({ email, password }) => {
+export const signIn = ({ email, password, redirectCallback }) => {
   return {
     type: 'SIGN_IN',
-    payload: { email, password },
+    payload: { email, password, redirectCallback },
   }
 }
 
